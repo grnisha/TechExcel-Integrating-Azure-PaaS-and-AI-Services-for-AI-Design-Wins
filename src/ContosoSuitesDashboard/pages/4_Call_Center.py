@@ -56,7 +56,7 @@ def create_transcription_request(audio_file, speech_recognition_language="en-US"
     transcriber.transcribed.connect(handle_final_result)
     transcriber.session_started.connect(lambda evt: print(f'SESSION STARTED: {evt}'))
     transcriber.session_stopped.connect(lambda evt: print(f'SESSION STOPPED {evt}'))
-    transcriber.canceled.connect(lambda evt: print(f'CANCELED {evt}')
+    transcriber.canceled.connect(lambda evt: print(f'CANCELED {evt}'))
     # TODO: stop continuous transcription on either session stopped or canceled events
     transcriber.session_stopped.connect(stop_cb)
     transcriber.canceled.connect(stop_cb)
