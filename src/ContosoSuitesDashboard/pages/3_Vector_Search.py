@@ -53,9 +53,14 @@ def main():
                 # Display the results.
                 st.write("## Results")
                 # Exercise 3 Task 3 TODO #6: Display the results as a table.
-                st.table(vector_search_results.json())
-            else:
-                st.warning("Please enter a query.")
+                try:
+                    # Attempt to parse the JSON response.
+                    results = vector_search_results.json()
+                    st.table(results)
+                except requests.exceptions.JSONDecodeError:
+                    st.error("Failed to decode JSON response")
+                else:
+                    st.warning("Please enter a query.")
 
 if __name__ == "__main__":
     main()
